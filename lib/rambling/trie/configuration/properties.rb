@@ -59,15 +59,24 @@ module Rambling
         def reset_serializers
           marshal_serializer = Rambling::Trie::Serializers::Marshal.new
           yaml_serializer = Rambling::Trie::Serializers::Yaml.new
-          # zip_serializer = Rambling::Trie::Serializers::Zip.new self
+          zip_serializer = Rambling::Trie::Serializers::Zip.new self unless RUBY_ENGINE == 'opal'
 
-          @serializers = Rambling::Trie::Configuration::ProviderCollection.new(
-            :serializer,
-            marshal: marshal_serializer,
-            yml: yaml_serializer,
-            yaml: yaml_serializer,
-            # zip: zip_serializer,
-          )
+          if RUBY_ENGINE == 'opal'
+            @serializers = Rambling::Trie::Configuration::ProviderCollection.new(
+              :serializer,
+              marshal: marshal_serializer,
+              yml: yaml_serializer,
+              yaml: yaml_serializer,
+            )
+          else
+            @serializers = Rambling::Trie::Configuration::ProviderCollection.new(
+              :serializer,
+              marshal: marshal_serializer,
+              yml: yaml_serializer,
+              yaml: yaml_serializer,
+              zip: zip_serializer,
+            )            
+          end
         end
       end
     end

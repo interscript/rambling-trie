@@ -1,25 +1,28 @@
 # frozen_string_literal: true
 
-# %w(
-#   comparable compressible compressor configuration container enumerable
-#   inspectable invalid_operation readers serializers stringifyable nodes
-#   version
-# ).each do |file|
-#   require File.join('rambling', 'trie', file)
-# end
-require 'rambling/trie/configuration'
-require 'rambling/trie/comparable'
-require 'rambling/trie/compressible'
-require 'rambling/trie/compressor'
-require 'rambling/trie/container'
-require 'rambling/trie/enumerable'
-require 'rambling/trie/inspectable'
-require 'rambling/trie/invalid_operation'
-require 'rambling/trie/readers'
-require 'rambling/trie/serializers'
-require 'rambling/trie/stringifyable'
-require 'rambling/trie/nodes'
-require 'rambling/trie/version'
+if RUBY_ENGINE == 'opal'
+  require 'rambling/trie/configuration'
+  require 'rambling/trie/comparable'
+  require 'rambling/trie/compressible'
+  require 'rambling/trie/compressor'
+  require 'rambling/trie/container'
+  require 'rambling/trie/enumerable'
+  require 'rambling/trie/inspectable'
+  require 'rambling/trie/invalid_operation'
+  require 'rambling/trie/readers'
+  require 'rambling/trie/serializers'
+  require 'rambling/trie/stringifyable'
+  require 'rambling/trie/nodes'
+  require 'rambling/trie/version'
+else    
+  %w(
+    comparable compressible compressor configuration container enumerable
+    inspectable invalid_operation readers serializers stringifyable nodes
+    version
+  ).each do |file|
+    require File.join('rambling', 'trie', file)
+  end
+end
 
 # General namespace for all Rambling gems.
 module Rambling

@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
-# %w(plain_text).each do |file|
-#   require File.join('rambling', 'trie', 'readers', file)
-# end
-
-require 'rambling/trie/readers/plain_text'
+if RUBY_ENGINE == 'opal'
+  require 'rambling/trie/readers/plain_text'
+else
+  %w(plain_text).each do |file|
+    require File.join('rambling', 'trie', 'readers', file)
+  end
+end
 
 module Rambling
   module Trie
