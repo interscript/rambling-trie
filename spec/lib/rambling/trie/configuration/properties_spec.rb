@@ -9,13 +9,15 @@ describe Rambling::Trie::Configuration::Properties do
     it 'configures the serializers' do
       serializers = properties.serializers
 
-      expect(serializers.formats).to match_array %i(marshal yaml yml)
-      expect(serializers.providers.to_a).to match_array [
-        [:marshal, Rambling::Trie::Serializers::Marshal],
-        [:yaml, Rambling::Trie::Serializers::Yaml],
-        [:yml, Rambling::Trie::Serializers::Yaml],
-        # [:zip, Rambling::Trie::Serializers::Zip],
-      ]
+      unless RUBY_ENGINE == 'opal'
+        expect(serializers.formats).to match_array %i(marshal yaml yml zip)        
+        expect(serializers.providers.to_a).to match_array [
+          [:marshal, Rambling::Trie::Serializers::Marshal],
+          [:yaml, Rambling::Trie::Serializers::Yaml],
+          [:yml, Rambling::Trie::Serializers::Yaml],
+          [:zip, Rambling::Trie::Serializers::Zip],
+        ]
+      end
     end
 
     it 'configures the readers' do
