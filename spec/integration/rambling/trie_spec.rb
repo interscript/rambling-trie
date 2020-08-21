@@ -65,23 +65,23 @@ describe Rambling::Trie do
       end
     end
 
-    # context 'when serialized with zipped Ruby marshal format' do
-    #   before do
-    #     @original_on_exists_proc = ::Zip.on_exists_proc
-    #     @original_continue_on_exists_proc = ::Zip.continue_on_exists_proc
-    #     ::Zip.on_exists_proc = true
-    #     ::Zip.continue_on_exists_proc = true
-    #   end
+    context 'when serialized with zipped Ruby marshal format' do
+      before do
+        @original_on_exists_proc = ::Zip.on_exists_proc
+        @original_continue_on_exists_proc = ::Zip.continue_on_exists_proc
+        ::Zip.on_exists_proc = true
+        ::Zip.continue_on_exists_proc = true
+      end
 
-    #   after do
-    #     ::Zip.on_exists_proc = @original_on_exists_proc
-    #     ::Zip.continue_on_exists_proc = @original_continue_on_exists_proc
-    #   end
+      after do
+        ::Zip.on_exists_proc = @original_on_exists_proc
+        ::Zip.continue_on_exists_proc = @original_continue_on_exists_proc
+      end
 
-    #   it_behaves_like 'a serializable trie' do
-    #     let(:trie_to_serialize) { Rambling::Trie.create words_filepath }
-    #     let(:format) { 'marshal.zip' }
-    #   end
-    # end
+      it_behaves_like 'a serializable trie' do
+        let(:trie_to_serialize) { Rambling::Trie.create words_filepath }
+        let(:format) { 'marshal.zip' }
+      end
+    end unless RUBY_ENGINE == 'opal'
   end
 end
