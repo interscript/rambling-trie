@@ -10,7 +10,6 @@ else
   end
 end
 
-
 module Rambling
   module Trie
     # Namespace for all serializers.

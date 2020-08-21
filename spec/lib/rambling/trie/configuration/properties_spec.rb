@@ -8,7 +8,6 @@ describe Rambling::Trie::Configuration::Properties do
   describe '.new' do
     it 'configures the serializers' do
       serializers = properties.serializers
-      
       expect(serializers.formats).to match_array %i(marshal yaml yml zip) unless RUBY_ENGINE == 'opal'       
       expect(serializers.providers.to_a).to match_array [
         [:marshal, Rambling::Trie::Serializers::Marshal],
