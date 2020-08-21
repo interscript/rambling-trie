@@ -4,10 +4,11 @@ $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 require 'rambling/trie/version'
 
 Gem::Specification.new do |gem|
-  gem.authors = ['Ribose Open']
+  gem.authors = ['Ribose Inc.']
+  gem.email = ['open.source@ribose.com']
 
   gem.description = <<~DESCRIPTION.gsub(%r{\s+}, ' ')
-    The Rambling Trie Opal is an opal compatible version of rambling-trie gem.
+    The original Rambling Trie gem but Opal-compatible.
   DESCRIPTION
 
   gem.summary = 'A Ruby implementation (Opal Compatible) of the trie data structure.'
