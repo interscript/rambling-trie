@@ -12,7 +12,7 @@ group :development do
   gem 'memory_profiler'
   gem 'pry'
   gem 'ruby-prof'
-  gem 'stackprof'
+  gem 'stackprof' unless Gem.win_platform?
 end
 
 group :test do
